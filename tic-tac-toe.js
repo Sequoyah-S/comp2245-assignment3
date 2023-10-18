@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
         squares[index].classList.add(currentPlayer);
         if (checkForWin()) {
           gameWon = true;
-          status.classList.add('you-won');
-          status.textContent = `Player ${currentPlayer} wins!`;
+          //status.classList.add('you-won');
+          //status.textContent = `Player ${currentPlayer} wins!`;
         } else {
           currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
           status.textContent = `Player ${currentPlayer}'s turn`;
@@ -35,9 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     // Function to check for a win
-    function checkForWin() {
-      // Implement your win condition checks here
-    }
+    //function checkForWin() {
+      
   
     // Event listener for square clicks
     squares.forEach((square, index) => {
@@ -83,21 +82,22 @@ function checkForWin() {
       [0, 4, 8],
       [2, 4, 6],
     ];
-  
+    
     for (const pattern of winPatterns) {
-      const [a, b, c] = pattern;
-      if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[b] === gameBoard[c]) {
-        gameWon = true;
-        status.classList.add('you-won');
-        status.textContent = `Congratulations! ${gameBoard[a]} is the Winner!`;
-        return true;
+        const [a, b, c] = pattern;
+        if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[b] === gameBoard[c]) {
+          gameWon = true;
+          status.classList.add('you-won');
+          status.textContent = `Congratulations! ${gameBoard[a]} is the Winner!`;
+          return true;
+        }
       }
-    }
-    if (!gameBoard.includes('')) {
-        gameWon = true;
-        //status.textContent = "It's a draw!";
-       // return true;
+      if (!gameBoard.includes('')) {
+          gameWon = true;
+          //status.textContent = "It's a draw!";
+         // return true;
+        }
+      
+        return false;
       }
     
-      return false;
-    }
